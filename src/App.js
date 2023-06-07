@@ -20,7 +20,7 @@ function App() {
                      <tr>
                          <th scope = 'col'>#</th>
                          <th scope = 'col'>Description</th>
-                         <th scope = 'col'>Assigned </th>
+                         <th scope = 'col'>Assigned</th>
                      </tr>
                  </thead>
                  <tbody>
