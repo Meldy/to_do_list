@@ -1,47 +1,35 @@
 import './App.css';
-import TodoRowItem from './components/TodoRowItem';
+import Todotable from "./components/Todotable";
 function App() {
 
     const todos = [
         {rowNumber : 1 , rowDescription : 'feed dog', rowAssigned : 'user one'},
         {rowNumber : 2 , rowDescription : 'water plants', rowAssigned : 'user two'},
-        {rowNumber : 3 , rowDescription : 'Make dinner', rowAssigned : 'user one'}
+        {rowNumber : 3 , rowDescription : 'Make dinner', rowAssigned : 'user one'},
+        {rowNumber : 4 , rowDescription : 'Charge phone', rowAssigned : 'user one'}
     ]
-
+const  addTodo = () => {
+        if (todos.length > 0){
+           const newTodo = {
+               rowNumber : todos.length + 1,
+               rowDescription: 'New Todo',
+               rowAssigned: 'User Three'
+           }
+           todos.push(newTodo); // adding the new todo to our list of todos
+           console.log(todos); //then console log all the todos
+        }
+}
   return (
     <div className= 'mt-5 container'>
      <div className = "card">
          <div className = "card-header">
-             Your todos
+             Your Todo' s
          </div>
          <div className = "card-body">
-             <table className = "table table-hover">
-                 <thead>
-                     <tr>
-                         <th scope = 'col'>#</th>
-                         <th scope = 'col'>Description</th>
-                         <th scope = 'col'>Assigned</th>
-                     </tr>
-                 </thead>
-                 <tbody>
-                 <TodoRowItem
-                     rowNumber = {todos[0].rowNumber}
-                     rowDescription={todos[0].rowDescription}
-                     rowAssigned = {todos[0].rowAssigned}
-                 />
-                 <TodoRowItem
-                     rowNumber = {todos[1].rowNumber}
-                     rowDescription={todos[1].rowDescription}
-                     rowAssigned = {todos[1].rowAssigned}
-                 />
-                 <TodoRowItem
-                     rowNumber = {todos[2].rowNumber}
-                     rowDescription={todos[2].rowDescription}
-                     rowAssigned = {todos[2].rowAssigned}
-                 />
-
-                 </tbody>
-             </table>
+             <Todotable todos = {todos}/>
+             <button className= 'btn btn-primary' onClick= {addTodo} >
+                 Add new todo
+             </button>
          </div>
      </div>
     </div>
