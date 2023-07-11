@@ -1,13 +1,16 @@
+import React, {useState} from 'react'; // add state functionality into our component
 import './App.css';
-import Todotable from "./components/Todotable";
+import Todotable from './components/Todotable';
+import NewTodoForm from './components/NewTodoForm';
 function App() {
 
-    const todos = [
+  const [todos, setTodos ] = useState( [ // destructuring the state that we passed in to rerender the page
         {rowNumber : 1 , rowDescription : 'feed dog', rowAssigned : 'user one'},
         {rowNumber : 2 , rowDescription : 'water plants', rowAssigned : 'user two'},
         {rowNumber : 3 , rowDescription : 'Make dinner', rowAssigned : 'user one'},
         {rowNumber : 4 , rowDescription : 'Charge phone', rowAssigned : 'user one'}
     ]
+  )
 const  addTodo = () => {
         if (todos.length > 0){
            const newTodo = {
@@ -15,8 +18,7 @@ const  addTodo = () => {
                rowDescription: 'New Todo',
                rowAssigned: 'User Three'
            }
-           todos.push(newTodo); // adding the new todo to our list of todos
-           console.log(todos); //then console log all the todos
+           setTodos(todos => [...todos, newTodo])
         }
 }
   return (
@@ -30,6 +32,7 @@ const  addTodo = () => {
              <button className= 'btn btn-primary' onClick= {addTodo} >
                  Add new todo
              </button>
+             <NewTodoForm/>
          </div>
      </div>
     </div>
